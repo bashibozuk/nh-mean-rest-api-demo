@@ -1,6 +1,9 @@
 const mongoose  = require('mongoose');
+require('dotenv').config({
+    path: '../.env'
+});
 const Articles = require('./articles')
-const uri = 'mongodb+srv://blog-app:bl0g-@pp@cluster0.rocff.mongodb.net/blog-app?retryWrites=true&w=majority';
+const uri = process.env.MONGO_URI;
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true

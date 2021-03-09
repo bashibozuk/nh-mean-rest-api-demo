@@ -3,13 +3,13 @@ const bodyParser = require('body-parser');
 const app = express();
 const routes = require('./routes');
 const mongoose  = require('mongoose');
+require('dotenv').config();
 
 app.use(bodyParser.json());
 app.use('/api', routes);
 
 
-
-const uri = 'mongodb+srv://blog-app:bl0g-@pp@cluster0.rocff.mongodb.net/blog-app?retryWrites=true&w=majority';
+const uri = process.env.MONGO_URI;
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
